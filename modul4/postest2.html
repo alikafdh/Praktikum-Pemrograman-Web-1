@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post-Test 2</title>
+  </head>
+  <body>
+    <form name="formPenjualan">
+      <table border="2">
+        <tr style="text-align: center">
+          <td colspan="2">Data Penjualan Barang</td>
+        </tr>
+        <tr>
+          <td><label>Kode</label></td>
+          <td>
+            <select name="kode" id="kode" onchange="updateBarang()">
+              <option value="">--Pilih Salah Satu--</option>
+              <option value="B001">B001</option>
+              <option value="B002">B002</option>
+              <option value="B003">B003</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label>Jumlah Beli</label></td>
+          <td>
+            <input
+              type="number"
+              name="jumlah_beli"
+              id="jumlah_beli"
+              oninput="updatePerhitungan()"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label>Nama Barang</label></td>
+          <td>
+            <input type="text" name="nama_barang" id="nama_barang" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td><label>Harga</label></td>
+          <td><input type="number" name="harga" id="harga" readonly /></td>
+        </tr>
+        <tr>
+          <td><label>Jumlah Bayar</label></td>
+          <td>
+            <input type="number" name="jml_bayar" id="jml_bayar" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Potongan</label>
+            <input type="number" name="diskon" id="diskon" readonly />%
+          </td>
+          <td>
+            <input
+              type="number"
+              name="harga_diskon"
+              id="harga_diskon"
+              readonly
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label>Total Bayar</label></td>
+          <td>
+            <input type="number" name="total_bayar" id="total_bayar" readonly />
+          </td>
+        </tr>
+        <tr style="text-align: center">
+          <td colspan="2">
+            <button type="button" onclick="tampil()">TAMPILKAN</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div
+      id="nota"
+      style="
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #000;
+        width: 300px;
+      "
+    ></div>
+
+    <script>
+      const barang = {
+        B001: { nama: "Buku", harga: 5000 },
+        B002: { nama: "Penggaris", harga: 1500 },
+        B003: { nama: "Pulpen", harga: 2000 },
+      };
+
+      function updateBarang() {
+        const kode = document.getElementById("kode").value;
+        const namaBarang = document.getElementById("nama_barang");
+        const harga = document.getElementById("harga");
+
+        if (kode in barang) {
+          namaBarang.value = barang[kode].nama;
+          harga.value = barang[kode].harga;
+        } else {
+          namaBarang.value = "";
+          harga.value = "";
+        }
+
+        document.getElementById("jumlah_beli").value = "";
+        updatePerhitungan();
+      }
+
+      function updatePerhitungan() {
+        const harga = parseFloat(document.getElementById("harga").value) || 0;
+        const jumlahBeli =
+          parseInt(document.getElementById("jumlah_beli").value) || 0;
+
+        if (!harga || !jumlahBeli) {
+          resetPerhitungan();
+          return;
+        }
+
+        const jumlahBayar = harga * jumlahBeli;
+        document.getElementById("jml_bayar").value = jumlahBayar;
+
+        let diskon = 0;
+        if (jumlahBeli >= 1 && jumlahBeli <= 10) {
+          diskon = 5;
+        } else if (jumlahBeli >= 11 && jumlahBeli <= 20) {
+          diskon = 10;
+        } else if (jumlahBeli > 20) {
+          diskon = 15;
+        }
+        document.getElementById("diskon").value = diskon;
+
+        const potongan = jumlahBayar * (diskon / 100);
+        document.getElementById("harga_diskon").value = potongan;
+
+        const totalBayar = jumlahBayar - potongan;
+        document.getElementById("total_bayar").value = totalBayar;
+      }
+
+      function resetPerhitungan() {
+        document.getElementById("jml_bayar").value = "";
+        document.getElementById("diskon").value = "";
+        document.getElementById("harga_diskon").value = "";
+        document.getElementById("total_bayar").value = "";
+      }
+
+      function tampil() {
+        var kode = document.getElementById("kode").value;
+        var namaBarang = document.getElementById("nama_barang").value;
+        var harga = document.getElementById("harga").value;
+        var jumlahBeli = document.getElementById("jumlah_beli").value;
+        var jumlahBayar = document.getElementById("jml_bayar").value;
+        var diskon = document.getElementById("diskon").value;
+        var hargaDiskon = document.getElementById("harga_diskon").value;
+        var totalBayar = document.getElementById("total_bayar").value;
+
+        if (!kode || !namaBarang || !jumlahBeli || !totalBayar) {
+          alert("Silakan lengkapi semua data dengan benar!");
+          return;
+        }
+
+        var notaContainer = document.getElementById("nota");
+        notaContainer.innerHTML = `
+                <h3>Nota Pembelian</h3>
+                <p><strong>Kode Barang:</strong> ${kode}</p>
+                <p><strong>Nama Barang:</strong> ${namaBarang}</p>
+                <p><strong>Harga Barang:</strong> Rp.${harga}</p>
+                <p><strong>Jumlah Beli:</strong> ${jumlahBeli}</p>
+                --------------------------------------------------------
+                <p><strong>Jumlah Bayar:</strong> Rp${jumlahBayar}</p>
+                <p><strong>Potongan (${diskon}%):</strong> Rp${hargaDiskon}</p>
+                ==================================
+                <p><strong>Total Bayar:</strong> Rp${totalBayar}</p>
+            `;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="button" onclick="validasiForm()">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function validasiForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === '' || password === '') {
+                alert("input tidak boleh kosong");
+                return;
+            }
+
+            const validUsername = 'admin';
+            const validPassword = '12345';
+
+            if (username === validUsername && password === validPassword) {
+                alert("Login berhasil!");
+            } else {
+                alert("Username atau password salah");
+            }
+        }
+    </script>
+</body>
+</html>

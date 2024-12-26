@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Data Nilai Mata Kuliah</title>
+</head>
+<body>
+    <h1>Form Tambah Data Nilai Mata Kuliah</h1>
+    <form method="post" action="submit-nilai.html">
+        <table border="0">
+            <tr>
+                <td><label for="matkul">Nama Mata Kuliah</label></td>
+                <td><input type="text" id="matkul" name="matkul" required /></td>
+            </tr>
+            <tr>
+                <td><label for="dosen">Nama Dosen</label></td>
+                <td><input type="text" id="dosen" name="dosen" required /></td>
+            </tr>
+            <tr>
+                <td><label for="sks">SKS</label></td>
+                <td><input type="number" id="sks" name="sks" min="1" max="4" required /></td>
+            </tr>
+            <tr>
+                <td><label for="mahasiswa">Nama Mahasiswa</label></td>
+                <td><input type="text" id="mahasiswa" name="mahasiswa" required /></td>
+            </tr>
+            <tr>
+                <td><label for="kehadiran">Jumlah Kehadiran</label></td>
+                <td><input type="number" id="kehadiran" name="kehadiran" min="0" max="16" required /></td>
+            </tr>
+            <tr>
+                <td><label for="tugas">Nilai Tugas</label></td>
+                <td><input type="number" id="tugas" name="tugas" min="0" max="100" required /></td>
+            </tr>
+            <tr>
+                <td><label for="quiz">Nilai Quiz</label></td>
+                <td><input type="number" id="quiz" name="quiz" min="0" max="100" required /></td>
+            </tr>
+            <tr>
+                <td><label for="uts">Nilai UTS</label></td>
+                <td><input type="number" id="uts" name="uts" min="0" max="100" required /></td>
+            </tr>
+            <tr>
+                <td><label for="uas">Nilai UAS</label></td>
+                <td><input type="number" id="uas" name="uas" min="0" max="100" required /></td>
+            </tr>
+            <tr>
+                <td><label for="nilai_akhir">Nilai Akhir</label></td>
+                <td><input type="number" id="nilai_akhir" name="nilai_akhir" min="0" max="100" required /></td>
+            </tr>
+            <tr>
+                <td><label for="nilai_huruf">Nilai Huruf</label></td>
+                <td><input type="text" id="nilai_huruf" name="nilai_huruf" maxlength="1" required /></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">Simpan</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

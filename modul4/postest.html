@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Test 2</title>
+</head>
+<body>
+    <form name="formPenjualan">
+        <table border="1">
+            <tr>
+                <td colspan="2" style="text-align: center;">Data Penjualan Barang</td>
+            </tr>
+            <tr>
+                <td>Kode</td>
+                <td>
+                    <select name="kode">
+                        <option value="">--Pilih Salah Satu--</option>
+                        <option value="B001">B001</option>
+                        <option value="B001">B002</option>
+                        <option value="B001">B003</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Jumlah Beli</td>
+                <td>
+                    <input type="number" name="jumlahBeli">
+                </td>
+            </tr>
+            <tr>
+                <td>Nama Barang</td>
+                <td>
+                    <input type="text" name="namaBarang" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td>
+                    <input type="text" name="harga" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Jumlah Bayar</td>
+                <td>
+                    <input type="text" name="jumlahBayar" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Potongan<input type="text" name="namaBarang" readonly></td>
+                <td>
+                    <input type="text" name="potongan" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>Total Bayar</td>
+                <td>
+                    <input type="text" name="totalBayr" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="button" name="tampil" value="Tampilkan" onclick="tampil()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

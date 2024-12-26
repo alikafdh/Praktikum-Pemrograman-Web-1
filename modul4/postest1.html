@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Test 1</title>
+</head>
+<body>
+        <form name="formGaji">
+            <table border="1">
+                <tr>
+                    <td colspan="2">PERHITUNGAN GAJI</td>
+                </tr>
+                <tr>
+                    <td>Golongan</td>
+                    <td>
+                        <select name="gol">
+                            <option value="I">I</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jumlah anak</td>
+                    <td><input type="number" name="anak" size="10" maxlength="10"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" name="hitung" value="Hitung" onclick="hit()">
+                        <input type="reset" name="batal" value="Cancel">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gaji Pokok</td>
+                    <td><input type="text" name="gapok" readonly></td>
+                </tr>
+                <tr>
+                    <td>Tunjangan</td>
+                    <td><input type="text" name="tunjangan" readonly></td>
+                </tr>
+                <tr>
+                    <td>Gaji Bersih</td>
+                    <td><input type="text" name="gaji" readonly></td>
+                </tr>
+            </table>
+        </form>
+
+        <script>
+            function hit(){
+            gol = document.formGaji.gol.value;
+            jumAnak = document.formGaji.anak.value;
+
+            if (gol == "I") {
+                gajiPokok = 250000;
+                tunjangan = (jumAnak * gajiPokok) * 0.05;
+                gajiBersih = gajiPokok + tunjangan;
+            } else if (gol == "II") {
+                gajiPokok = 300000;
+                tunjangan = (jumAnak * gajiPokok) * 0.1;
+                gajiBersih = gajiPokok + tunjangan;
+            } else if (gol == "III") {
+                gajiPokok = 350000;
+                tunjangan = (jumAnak * gajiPokok) * 0.15;
+                gajiBersih = gajiPokok + tunjangan;
+            }
+
+            document.formGaji.gapok.value = gajiPokok;
+            document.formGaji.tunjangan.value = tunjangan;
+            document.formGaji.gaji.value = gajiBersih;
+            }
+        </script>
+</body>
+</html>
